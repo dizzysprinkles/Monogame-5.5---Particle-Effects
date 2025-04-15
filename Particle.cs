@@ -47,9 +47,5 @@ namespace Monogame_5._5___Particle_Effects
 
             spriteBatch.Draw(_texture, _position, sourceRectangle, _color, _angle, origin, _size, SpriteEffects.None, 0f);
         }
-
-
-
     }
-
 }
