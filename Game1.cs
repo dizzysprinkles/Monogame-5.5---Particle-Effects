@@ -13,6 +13,8 @@ namespace Monogame_5._5___Particle_Effects
         ParticleSystem particleSystem;
         List<Texture2D> particleTextures;
 
+        MouseState mouseState;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -40,7 +42,8 @@ namespace Monogame_5._5___Particle_Effects
 
         protected override void Update(GameTime gameTime)
         {
-            particleSystem._emitterLocation = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
+            mouseState = Mouse.GetState();
+            particleSystem._emitterLocation = new Vector2(mouseState.X, mouseState.Y);
 
             particleSystem.Update();
 

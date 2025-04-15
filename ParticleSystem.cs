@@ -32,6 +32,7 @@ namespace Monogame_5._5___Particle_Effects
                     1f * (float)(_generator.NextDouble() * 2 - 1));
             float angle = 0;
             float angularVelocity = 0.1f * (float)(_generator.NextDouble() * 2 - 1);
+
             Color color = new Color(
                     (float)_generator.NextDouble(),
                     (float)_generator.NextDouble(),
