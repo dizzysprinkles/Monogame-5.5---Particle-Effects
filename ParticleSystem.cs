@@ -33,6 +33,7 @@ namespace Monogame_5._5___Particle_Effects
             float angle = 0;
             float angularVelocity = 0.1f * (float)(_generator.NextDouble() * 2 - 1);
 
+            //Hexadecimal thing of color, randomly generates every particles
             Color color = new Color(
                     (float)_generator.NextDouble(),
                     (float)_generator.NextDouble(),
