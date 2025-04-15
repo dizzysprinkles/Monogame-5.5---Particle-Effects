@@ -64,12 +64,10 @@ namespace Monogame_5._5___Particle_Effects
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
             for (int index = 0; index < _particles.Count; index++)
             {
                 _particles[index].Draw(spriteBatch);
             }
-            spriteBatch.End();
         }
 
     }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace Monogame_5._5___Particle_Effects
 {
@@ -8,6 +9,9 @@ namespace Monogame_5._5___Particle_Effects
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
+        ParticleSystem particleSystem;
+        List<Texture2D> particleTextures;
 
         public Game1()
         {
@@ -18,7 +22,7 @@ namespace Monogame_5._5___Particle_Effects
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            particleTextures = new List<Texture2D>();
 
             base.Initialize();
         }
@@ -27,24 +31,36 @@ namespace Monogame_5._5___Particle_Effects
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            particleTextures.Add(Content.Load<Texture2D>("Images/circle"));
+            particleTextures.Add(Content.Load<Texture2D>("Images/star"));
+            particleTextures.Add(Content.Load<Texture2D>("Images/diamond"));
+
+            particleSystem = new ParticleSystem(particleTextures, new Vector2(400, 240));
         }
 
         protected override void Update(GameTime gameTime)
         {
+            particleSystem._emitterLocation = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
+
+            particleSystem.Update();
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            // TODO: Add your update logic here
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
+
+            _spriteBatch.Begin();
+
+            particleSystem.Draw(_spriteBatch);
+
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
