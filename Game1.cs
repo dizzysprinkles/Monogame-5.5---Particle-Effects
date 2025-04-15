@@ -54,8 +54,6 @@ namespace Monogame_5._5___Particle_Effects
         {
             GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
-
             _spriteBatch.Begin();
 
             particleSystem.Draw(_spriteBatch);
